@@ -4,6 +4,10 @@ module Projects
       @projects = repo.all
     end
 
+    def show
+      @project = repo.by_id(params[:id])
+    end
+
     def new
       @project = Projects::Project.new
     end
