@@ -4,7 +4,7 @@ class ApplicationModel < ROM::Struct
     klass.extend ActiveModel::Naming
     klass.include ActiveModel::Conversion
     
-    klass.transform_types { |t| t.meta(omittable: true) }
+    klass.transform_types { |t| t.omittable }
   end
 
   def persisted?
