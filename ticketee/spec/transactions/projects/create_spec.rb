@@ -24,7 +24,7 @@ RSpec.describe Projects::Create do
   context "persist" do
     let(:project_repo) { double(ProjectRepository) }
     
-    before { allow(subject).to receive(:project_repo) { project_repo } }
+    subject { described_class.new(project_repo: project_repo) }
 
     it "succeeds" do
       project = double(:project)
@@ -37,7 +37,7 @@ RSpec.describe Projects::Create do
   context "the whole thing" do
     let(:project_repo) { double(ProjectRepository) }
     
-    before { allow(subject).to receive(:project_repo) { project_repo } }
+    subject { described_class.new(project_repo: project_repo) }
 
     context "when valid parameters are given" do
       let(:input) { { name: "Test Project" } }

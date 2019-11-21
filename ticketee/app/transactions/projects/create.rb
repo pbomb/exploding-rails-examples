@@ -3,6 +3,7 @@ require 'dry-transaction'
 module Projects
   class Create
     include Dry::Transaction
+    include Ticketee::Import["project_repo"]
 
     step :validate
     map :persist
@@ -18,12 +19,6 @@ module Projects
 
     def persist(input)
       project_repo.create(input)
-    end
-
-    private
-
-    def project_repo
-      ProjectRepository.new(ROM.env)
     end
   end
 end
